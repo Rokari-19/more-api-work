@@ -1,5 +1,5 @@
 from tkinter import * 
-from quiz_brain import QuizBrain
+from assets.quiz_brain import QuizBrain
 THEME_COLOR = "#375362"
 
 false = "./images/false.png"
@@ -47,17 +47,21 @@ class Quiz_Ui:
     
     def reset_canvas(self):
         self.canvas.config(background="white")
+        self.canvas.itemconfig(self.question_label, fill=THEME_COLOR)
 
 
     def check_true(self):
         self.is_true = "true"
         check = self.quiz.check_answer(self.is_true)
         if check == True:
+            self.score += 1
             self.canvas.config(background="green")
+            self.canvas.itemconfig(self.question_label, fill="white")
             reset = self.window.after(3000, func=self.reset_canvas)
             self.window.after(3000, func=self.get_nxt_qstn)
         else:
             self.canvas.config(background="red")
+            self.canvas.itemconfig(self.question_label, fill="white")
             reset = self.window.after(3000, func=self.reset_canvas)
             self.window.after(3000, func=self.get_nxt_qstn)
 
@@ -65,6 +69,7 @@ class Quiz_Ui:
         self.is_true = "false"
         check = self.quiz.check_answer(self.is_true)
         if check == True:
+            self.score += 1
             self.canvas.config(background="green")
             reset = self.window.after(3000, func=self.reset_canvas)
             self.window.after(3000, func=self.get_nxt_qstn)

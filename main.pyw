@@ -1,7 +1,7 @@
-from question_model import Question
-from data import question_data
-from quiz_brain import QuizBrain
-from ui import Quiz_Ui
+from assets.question_model import Question
+from assets.data import question_data
+from assets.quiz_brain import QuizBrain
+from assets.ui import Quiz_Ui
 
 question_bank = []
 for question in question_data:
